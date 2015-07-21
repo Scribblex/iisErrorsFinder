@@ -1,5 +1,4 @@
 var fs = require('fs');
-var logFiles = [];
 var results = '';
 var toWriteTo = '';
 var logs = '';
@@ -48,11 +47,7 @@ fs.readdir('./iis-logs/', function (err, files) {
     }
 
     files.forEach(function (file) {
-        logFiles.push(file);
-    });
-
-    for (var i = 0; i < logFiles.length; i += 1) {
-        var source = './iis-logs/' + logFiles[i];
+        var source = './iis-logs/' + file;
         parseFile(source);
-    }
+    });
 });
